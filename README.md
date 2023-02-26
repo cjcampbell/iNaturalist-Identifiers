@@ -2,6 +2,32 @@
 Analyses associated with 'Identifying the Identifiers: How iNaturalist facilitates collaborative, research-relevant data generation and why it matters for biodiversity science'
 
 Raw data associated with this project will be repositoried on OSF.io: https://osf.io/635p7/.
+## Contents
+
+This repository contains:
+### /R/
+Scripts used to read, tidy, and standardize data and run analyses.
+| Script                                 | Description |
+| -----------                            | ----------- |
+| 00_setup.R                             | Setup workspace, define universal objects |
+| 01_downloadData.R                      | Download data used in study <br>ote that this script sources Google Drive, while the raw data are repositoried in OSF.io at https://osf.io/635p7/</i>. |
+| 02_createDb.R                          | Assemble SQL database |                  
+|03_fillInTaxonomy.R                     | Complete taxonomy table using targetted queries to iNaturalist.org |   
+|04_checksAndQAQC.R                      | Generate files for external QA/QC checks. |                        
+|05_countCumulativeEventsByDate.R        | Count events (observations, identifications, etc.) by date. |                                        
+|06_userObsAndIDActivity.R               | Determine activity levels for all users. |                                                
+|07_userGeographicInfo.R                 | Estimate user location (centroid of observations) and extent and distance of identifications. |            
+|08_obsGeographicInfo.R                  | Determine geographic info (country, biome, etc.) of observations. | 
+|09_summarizeTaxonomy.R                  | Find number of observations and identifications per taxa at varying taxonomic rank levels. |  
+|10_countTables.R                        | Summarize user activity patterns across various axes |                                               
+|11_obsQualityGrade.R                    | Estimate quality grade and time to quality grade changes for observations. |                              
+|12_modelFitting.R                       | Fit models tracking changes from upload through quality grade status changes. |  
+|13_plotPatternsOfIDerActivity.R         | Plot patterns of identifier activity, e.g., observation v. identification counts |             
+|14_plotTaxPatterns.R                    | Plot patterns of identifier activity across taxon rank levels. |   
+|15_plotUserSpecializationAndMaps.R      | Plot user identification patterns. |              
+|16_plotGrowth.R                         | Plot growth of iNaturalist activity over time. |             
+|17_plotModelResults.R                   | Plot sanke plot results of quality grade changes, based on model outputs. |
+
 
 ## Session info
 Analyses were conducted with the following configuration:
