@@ -9,7 +9,7 @@ This repository contains:
 Scripts used to read, tidy, and standardize data and run analyses.
 | Script                                 | Description |
 | -----------                            | ----------- |
-| 00_setup.R                             | Setup workspace, define universal objects |
+| 00_setup.R                             | Setup workspace, define navigational objects |
 | 01_downloadData.R                      | Download data used in study <br>ote that this script sources Google Drive, while the raw data are repositoried in OSF.io at https://doi.org/10.17605/OSF.IO/J752N</i>. |
 | 02_createDb.R                          | Assemble SQL database |                  
 |03_fillInTaxonomy.R                     | Complete taxonomy table using targetted queries to iNaturalist.org |   
