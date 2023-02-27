@@ -10,7 +10,7 @@ Scripts used to read, tidy, and standardize data and run analyses.
 | Script                                 | Description |
 | -----------                            | ----------- |
 | 00_setup.R                             | Setup workspace, define universal objects |
-| 01_downloadData.R                      | Download data used in study <br>ote that this script sources Google Drive, while the raw data are repositoried in OSF.io at https://osf.io/635p7/</i>. |
+| 01_downloadData.R                      | Download data used in study <br>ote that this script sources Google Drive, while the raw data are repositoried in OSF.io at https://osf.io/j752n/</i>. |
 | 02_createDb.R                          | Assemble SQL database |                  
 |03_fillInTaxonomy.R                     | Complete taxonomy table using targetted queries to iNaturalist.org |   
 |04_checksAndQAQC.R                      | Generate files for external QA/QC checks. |                        
