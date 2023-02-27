@@ -1,7 +1,7 @@
 # iNaturalist-Identifiers
 Analyses associated with 'Identifying the Identifiers: How iNaturalist facilitates collaborative, research-relevant data generation and why it matters for biodiversity science'
 
-Raw data associated with this project will be repositoried on OSF.io: https://osf.io/635p7/.
+Raw data associated with this project will be repositoried on OSF.io: https://osf.io/j752n/.
 ## Contents
 
 This repository contains:
