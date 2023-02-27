@@ -356,6 +356,17 @@ library(geosphere)
 wrld <- rnaturalearth::countries110 %>% 
   st_as_sf()
 
+makeDoublePlot <- function(plot1, map1, textString) {
+  p <- ggdraw() +
+    draw_plot(map1, height = 0.75, width = 1, y = 0.25) +
+    draw_plot(plot1, x = 0.5, y = 0.05, width = 0.75, height = 0.25, vjust = 0, hjust = 0.5) +
+    draw_text(text = paste(textString), y = 0.37, x = 1, vjust = 1, hjust = 1, size = 12, color = "grey80")
+  return(p)
+}
+
+
+
+
 # Someone from group 1-1
 set.seed(42)
 myID_1_1 <- df2 %>% 
@@ -367,10 +378,11 @@ myID_1_1 <- df2 %>%
 mycolor = mycols[names(mycols) == "1_1"]
 p_map1_1 <- makePlot(id = myID_1_1, mycolor = mycolor)
 p_qPlot1_1 <- make_quantPlot(id = myID_1_1, mycolor = mycolor)
-p.1_1 <- ggdraw() +
-  draw_plot(p_map1_1, height = 0.7) +
-  draw_plot(p_qPlot1_1, x = 0.5, y = 0.95, width = 0.5, height = 0.3, vjust = 1, hjust = 0.5) +
-  draw_text(text = paste("@cesarmassi - Cesar Massi  "), y = 0, x = 1, vjust = -1, hjust = 1, size = 12, color = "grey80")
+p.1_1 <- makeDoublePlot(p_qPlot1_1, p_map1_1, "@cesarmassi - Cesar Massi  ")
+# p.1_1 <- ggdraw() +
+#   draw_plot(p_map1_1, height = 0.7) +
+#   draw_plot(p_qPlot1_1, x = 0.5, y = 0.95, width = 0.75, height = 0.3, vjust = 1, hjust = 0.5) +
+#   draw_text(text = paste("@cesarmassi - Cesar Massi  "), y = 0, x = 1, vjust = -1, hjust = 1, size = 12, color = "grey80")
 ggsave(p.1_1, filename = file.path(wd$figs, "user_cesarmassi_mapAndStats.png"), width = 12, height = 12, bg = "black")
 ggsave(p_map1_1, filename = file.path(wd$figs, "user_cesarmassi_map.png"), width = 12, height = 12, bg = "black")
 ggsave(p_map1_1 + coord_sf(xlim = c(-100, -10), ylim = c(-60, 10)), filename = file.path(wd$figs, "user_cesarmassi_map_zoomed.png"), width = 12, height = 12, bg = "black")
@@ -382,33 +394,34 @@ myID_1_4 <- 429066 # featherenthusiast https://www.inaturalist.org/people/feathe
 mycolor = mycols[names(mycols) == "1_4"]
 p_map1_4 <- makePlot(myID_1_4, mycolor = mycolor)
 p_qPlot1_4 <- make_quantPlot(myID_1_4, mycolor = mycolor)
-p.1_4 <- ggdraw() +
-  draw_plot(p_map1_4, height = 0.7) +
-  draw_plot(p_qPlot1_4, x = 0.5, y = 0.95, width = 0.5, height = 0.3, vjust = 1, hjust = 0.5) +
-  draw_text(text = paste("@featherenthusiast - Amanda Janusz  "), y = 0, x = 1, vjust = -1, hjust = 1, size = 12, color = "grey80")
+p.1_4 <- makeDoublePlot(p_qPlot1_4, p_map1_4, "@featherenthusiast - Amanda Janusz  ")
+# p.1_4 <- ggdraw() +
+#   draw_plot(p_map1_4, height = 0.7) +
+#   draw_plot(p_qPlot1_4, x = 0.5, y = 0.95, width = 0.75, height = 0.3, vjust = 1, hjust = 0.5) +
+#   draw_text(text = paste("@featherenthusiast - Amanda Janusz  "), y = 0, x = 1, vjust = -1, hjust = 1, size = 12, color = "grey80")
 ggsave(p.1_4, filename = file.path(wd$figs, "user_featherenthusiast_mapAndStats.png"), width = 12, height = 12, bg = "black")
 ggsave(p_map1_4, filename = file.path(wd$figs, "user_featherenthusiast_map.png"), width = 12, height = 12, bg = "black")
 
 
-# 3-1 or 4-1
-set.seed(37)
-myID_3_1 <- df2 %>% 
-  dplyr::filter(code %in% c("4_1", "3_1")) %>% 
-  arrange(desc(n_IDs)) %>% 
-  slice(4) %>% 
-  dplyr::select(user.id) %>% 
-  unlist
-(myID_3_1)
-# https://www.inaturalist.org/users/896523
-mycolor = mycols[names(mycols) == "3_1"]
-p_map3_1 <- makePlot(id = myID_3_1, mycolor = mycolor)
-p_qPlot3_1 <- make_quantPlot(id = myID_3_1, mycolor = mycolor)
-p.3_1 <- ggdraw() +
-  draw_plot(p_map3_1, height = 0.7) +
-  draw_plot(p_qPlot3_1, x = 0.5, y = 0.95, width = 0.5, height = 0.3, vjust = 1, hjust = 0.5) +
-  draw_text(text = paste("@tutukiwi - Andrew Townsend  "), y = 0, x = 1, vjust = -1, hjust = 1, size = 12, color = "grey80")
-ggsave(p.3_1, filename = file.path(wd$figs, "user_tutukiwi_mapAndStats.png"), width = 12, height = 12, bg = "black")
-ggsave(p_map3_1, filename = file.path(wd$figs, "user_tutukiwi_map.png"), width = 12, height = 12, bg = "black")
+# # 3-1 or 4-1
+# set.seed(37)
+# myID_3_1 <- df2 %>% 
+#   dplyr::filter(code %in% c("4_1", "3_1")) %>% 
+#   arrange(desc(n_IDs)) %>% 
+#   slice(4) %>% 
+#   dplyr::select(user.id) %>% 
+#   unlist
+# (myID_3_1)
+# # https://www.inaturalist.org/users/896523
+# mycolor = mycols[names(mycols) == "3_1"]
+# p_map3_1 <- makePlot(id = myID_3_1, mycolor = mycolor)
+# p_qPlot3_1 <- make_quantPlot(id = myID_3_1, mycolor = mycolor)
+# p.3_1 <- ggdraw() +
+#   draw_plot(p_map3_1, height = 0.7) +
+#   draw_plot(p_qPlot3_1, x = 0.5, y = 0.95, width = 0.75, height = 0.3, vjust = 1, hjust = 0.5) +
+#   draw_text(text = paste("@tutukiwi - Andrew Townsend  "), y = 0, x = 1, vjust = -1, hjust = 1, size = 12, color = "grey80")
+# ggsave(p.3_1, filename = file.path(wd$figs, "user_tutukiwi_mapAndStats.png"), width = 12, height = 12, bg = "black")
+# ggsave(p_map3_1, filename = file.path(wd$figs, "user_tutukiwi_map.png"), width = 12, height = 12, bg = "black")
 
 
 # And an alternate
@@ -423,10 +436,11 @@ myID_3_1_b <- df2 %>%
 mycolor = mycols[names(mycols) == "3_1"]
 p_map3_1b <- makePlot(id = myID_3_1_b, mycolor = mycolor)
 p_qPlot3_1b <- make_quantPlot(id = myID_3_1_b, mycolor = mycolor)
-p.3_1b <- ggdraw() +
-  draw_plot(p_map3_1b, height = 0.7) +
-  draw_plot(p_qPlot3_1b, x = 0.5, y = 0.95, width = 0.5, height = 0.3, vjust = 1, hjust = 0.5) +
-  draw_text(text = paste("@m_d - Mahomed Desai   "), y = 0, x = 1, vjust = -1, hjust = 1, size = 12, color = "grey80")
+p.3_1b <- makeDoublePlot(p_qPlot3_1b, p_map3_1b, "@m_d - Mahomed Desai   ")
+# p.3_1b <- ggdraw() +
+#   draw_plot(p_map3_1b, height = 0.7) +
+#   draw_plot(p_qPlot3_1b, x = 0.5, y = 0.95, width = 0.75, height = 0.3, vjust = 1, hjust = 0.5) +
+#   draw_text(text = paste("@m_d - Mahomed Desai   "), y = 0, x = 1, vjust = -1, hjust = 1, size = 12, color = "grey80")
 ggsave(p.3_1b, filename = file.path(wd$figs, "user_m_d_mapAndStats.png"), width = 12, height = 12, bg = "black")
 ggsave(p_map3_1b, filename = file.path(wd$figs, "user_m_d_map.png"), width = 12, height = 12, bg = "black")
 
@@ -444,13 +458,13 @@ myID_3_3 <- df2 %>%
 mycolor = mycols[names(mycols) == "3_3"]
 p_map3_3 <- makePlot(id = myID_3_3, mycolor = mycolor)
 p_qPlot3_3 <- make_quantPlot(id = myID_3_3, mycolor = mycolor)
-p.3_3 <- ggdraw() +
-  draw_plot(p_map3_3, height = 0.75, width = 1) +
-  draw_plot(p_qPlot3_3, x = 0.5, y = 0.95, width = 0.5, height = 0.25, vjust = 1, hjust = 0.5) +
-  draw_text(text = paste("@hydaticus - Robby Deans  "), y = 0, x = 1, vjust = -1, hjust = 1, size = 12, color = "grey80")
+p.3_3 <- makeDoublePlot(p_qPlot3_3, p_map3_3, "@hydaticus - Robby Deans  ")
+# p.3_3 <- ggdraw() +
+#   draw_plot(p_map3_3, height = 0.75, width = 1, y = 0.25) +
+#   draw_plot(p_qPlot3_3, x = 0.5, y = 0.05, width = 0.75, height = 0.25, vjust = 0, hjust = 0.5) +
+#   draw_text(text = paste("@hydaticus - Robby Deans  "), y = 0.37, x = 1, vjust = 1, hjust = 1, size = 12, color = "grey80")
 ggsave(p.3_3, filename = file.path(wd$figs, "user_hydaticus_mapAndStats.png"), width = 12, height = 12, bg = "black")
 ggsave(p_map3_3, filename = file.path(wd$figs, "user_hydaticus_map.png"), width = 12, height = 12, bg = "black")
-
 
 
 p_maps <- ggarrange(
@@ -480,11 +494,10 @@ p_big <- ggarrange(
 
 p_big2 <- cowplot::ggdraw() +
   draw_grob(as_grob(p_big)) +
-  draw_text(text = "A", x = 0.02, y = 0.99, color = "grey80", size = 18, family = "Roboto", fontface = "bold") +
-  draw_text(text = "B", x = 0.40, y = 0.99, color = "grey80", size = 18, family = "Roboto", fontface = "bold") +
+  draw_text(text = "A", x = 0.02, y = 0.98, color = "grey80", size = 18, family = "Roboto", fontface = "bold") +
+  draw_text(text = "B", x = 0.42, y = 0.98, color = "grey80", size = 18, family = "Roboto", fontface = "bold") +
   draw_text(text = "C", x = 0.02, y = 0.63, color = "grey80", size = 18, family = "Roboto", fontface = "bold") +
   draw_text(text = "D", x = 0.51, y = 0.63, color = "grey80", size = 18, family = "Roboto", fontface = "bold") +
   draw_text(text = "E", x = 0.02, y = 0.30, color = "grey80", size = 18, family = "Roboto", fontface = "bold") +
   draw_text(text = "F", x = 0.51, y = 0.30, color = "grey80", size = 18, family = "Roboto", fontface = "bold")
 ggsave(p_big2, filename = file.path(wd$figs, "usersVIDs-area_dark-Maps.png"), bg = "black", width = 12, height = 14)
-
