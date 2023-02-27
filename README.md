@@ -1,7 +1,7 @@
 # iNaturalist-Identifiers
 Analyses associated with 'Identifying the Identifiers: How iNaturalist facilitates collaborative, research-relevant data generation and why it matters for biodiversity science'
 
-Raw data associated with this project will be repositoried on OSF.io: https://osf.io/j752n/.
+Raw data associated with this project will be repositoried on OSF.io:  https://doi.org/10.17605/OSF.IO/J752N.
 ## Contents
 
 This repository contains:
@@ -10,7 +10,7 @@ Scripts used to read, tidy, and standardize data and run analyses.
 | Script                                 | Description |
 | -----------                            | ----------- |
 | 00_setup.R                             | Setup workspace, define universal objects |
-| 01_downloadData.R                      | Download data used in study <br>ote that this script sources Google Drive, while the raw data are repositoried in OSF.io at https://osf.io/j752n/</i>. |
+| 01_downloadData.R                      | Download data used in study <br>ote that this script sources Google Drive, while the raw data are repositoried in OSF.io at https://doi.org/10.17605/OSF.IO/J752N</i>. |
 | 02_createDb.R                          | Assemble SQL database |                  
 |03_fillInTaxonomy.R                     | Complete taxonomy table using targetted queries to iNaturalist.org |   
 |04_checksAndQAQC.R                      | Generate files for external QA/QC checks. |                        
